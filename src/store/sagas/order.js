@@ -27,7 +27,7 @@ export function* fetchOrdersSaga(action) {
   const queryParams = `?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"`
 
   try {
-    const response = axios.get(`orders.json${queryParams}`)
+    const response = yield axios.get(`/orders.json${queryParams}`)
     const fetchedOrders = []
     for (let key in response.data) {
       fetchedOrders.push({
